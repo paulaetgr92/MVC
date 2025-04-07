@@ -17,6 +17,7 @@ def obter_professor(id):
     except ProfessorNaoEncontrado as e:
         return jsonify({"erro": str(e)}), 404
 
+
 @professor_bp.route('/', methods=["POST"])
 def criar_professor():
     try:
@@ -25,7 +26,8 @@ def criar_professor():
         return jsonify({"mensagem": "Professor cadastrado com sucesso!", "professor": novo}), 201
     except Exception as e:
         return jsonify({"erro": str(e)}), 400
-
+    
+    
 @professor_bp.route('/<int:id>', methods=["PUT"])
 def editar_professor(id):
     try:

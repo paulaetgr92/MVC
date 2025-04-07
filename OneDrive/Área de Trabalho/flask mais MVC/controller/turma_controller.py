@@ -26,6 +26,7 @@ def criar_turma():
     except Exception as e:
         return jsonify({"erro": str(e)}), 400
 
+
 @turma_bp.route('/<int:id>', methods=["PUT"])
 def editar_turma(id):
     try:

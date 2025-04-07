@@ -16,15 +16,19 @@ def turma_infos(id):
                 return turma
             raise TurmaNaoEncontrada(f"Turma com ID {id} não encontrado.")
 
+turmas = []
 
 def cadastrar_turma(nova_turma):
     for turma in turmas:
-            if (turma["descricao"].lower() == nova_turma["descricao"].lower() and
-                turma["professor_id"] == nova_turma["professor_id"] and
-                turma["ativo"] == nova_turma["ativo"]):
-                 raise Exception ("Turma já cadastrada")
-            nova_turma["id"] = len(turmas) + 1
-            turmas.append(nova_turma)
+        if (turma["descricao"].lower() == nova_turma["descricao"].lower() and
+            turma["professor_id"] == nova_turma["professor_id"] and
+            turma["ativo"] == nova_turma["ativo"]):
+            raise Exception("Turma já cadastrada")
+
+    nova_turma["id"] = len(turmas) + 1  # fora do for
+    turmas.append(nova_turma)
+    return nova_turma
+
 
 def atualizar_turma(id, dados):
         
